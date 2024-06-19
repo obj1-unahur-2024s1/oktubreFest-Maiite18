@@ -2,12 +2,13 @@ import jarrasYCervezas.*
 
 
 class Persona {
-	var property peso = 0 
+	var property peso = 0
 	var property jarrasCompradas = []
 	var property musicaTradicional = null
 	var property aguante = 0 
+	var property marcasQueLeGustan = []
 	
-	method estaEbria() = jarrasCompradas.sum({x=>x.graduacionAlcoholica()}) * peso > aguante
+	method estaEbria() = self.totalAlcohol() * peso > aguante
 	method totalAlcohol() = jarrasCompradas.sum({x=>x.graduacionAlcoholica()})
 	method comprarJarra(jarra) {jarrasCompradas.add(jarra)}
 	
@@ -15,19 +16,19 @@ class Persona {
 }
 
 class Belga inherits Persona{
-	
+	const property nacionalidad = "Belga"
 	method leGustaLaCerveza(cerveza) = cerveza.contLupulo() > 4
 	
 }
 
 class Checo inherits Persona{
-	
+	const property nacionalidad = "Checo"
 	method leGustaLaCerveza(cerveza) = cerveza.contenidoAlcohol() > 0.08
 	
 }
 
 class Aleman inherits Persona{
-	
+	const property nacionalidad = "Aleman"
 	method leGustaLaCerveza(cerveza) = true
 	
 }
