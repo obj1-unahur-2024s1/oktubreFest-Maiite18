@@ -1,0 +1,36 @@
+import jarrasYCervezas.*
+import personas.*
+
+test "cont Alcohol" {
+	const cerveza = new CervezaRoja()
+	cerveza.contLupulo(5)
+	const jarra = new Jarra()
+	jarra.capacidad(0.5)
+	jarra.marca(cerveza)
+	
+	
+	assert.that(jarra.graduacionAlcoholica()== 0.04 )
+
+}
+
+test "total Alcohol Belga en base a dos jarras"{
+	const cerveza = new CervezaRoja()
+	cerveza.contLupulo(5)
+	const jarra = new Jarra()
+	jarra.capacidad(0.5)
+	jarra.marca(cerveza)
+	
+	const cerveza2 = new CervezaRoja()
+	cerveza2.contLupulo(2)
+	const jarra2 = new Jarra()
+	jarra2.capacidad(0.5)
+	jarra2.marca(cerveza2)
+	
+	const belga = new Belga()
+	belga.comprarJarra(jarra)
+	belga.comprarJarra(jarra2)
+	
+	assert.equals(belga.totalAlcohol(), 0.08)
+	
+	
+}
