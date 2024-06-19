@@ -1,0 +1,20 @@
+class Carpa {
+	var property limiteGente = 0
+	var property musicaTradicional = null
+	var property marcaJarra = null
+	var property personasEnCarpa = []
+	
+	method quiereEntrar(persona) = persona.marcasQueLeGustan().any({x=>x == marcaJarra}) 
+	       						   and (persona.musicaTradicional() and musicaTradicional) 
+	   							   and if (persona.nacionalidad() == "Aleman") personasEnCarpa.size() % 2 == 0 else true
+	
+	method dejaIngresar(persona) = personasEnCarpa.size() < limiteGente and not persona.estaEbria()
+	
+	method puedeEntrar(persona) = self.quiereEntrar(persona) and self.dejaIngresar(persona)
+	
+	method entre(persona) = if(self.puedeEntrar(persona)) personasEnCarpa.add(persona) else 000
+	
+	method 
+}
+
+
