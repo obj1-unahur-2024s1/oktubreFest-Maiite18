@@ -1,0 +1,33 @@
+import jarrasYCervezas.*
+
+
+class Persona {
+	var property peso = 0 
+	var property jarrasCompradas = []
+	var property musicaTradicional = null
+	var property aguante = 0 
+	
+	method estaEbria() = jarrasCompradas.sum({x=>x.graduacionAlcoholica()}) * peso > aguante
+	method totalAlcohol() = jarrasCompradas.sum({x=>x.graduacionAlcoholica()})
+	method comprarJarra(jarra) {jarrasCompradas.add(jarra)}
+	
+	
+}
+
+class Belga inherits Persona{
+	
+	method leGustaLaCerveza(cerveza) = cerveza.contLupulo() > 4
+	
+}
+
+class Checo inherits Persona{
+	
+	method leGustaLaCerveza(cerveza) = cerveza.contenidoAlcohol() > 0.08
+	
+}
+
+class Aleman inherits Persona{
+	
+	method leGustaLaCerveza(cerveza) = true
+	
+}
