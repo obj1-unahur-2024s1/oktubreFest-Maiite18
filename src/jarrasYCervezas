@@ -1,0 +1,32 @@
+class Cerveza {
+	var property contLupulo = 0
+	var property pais = null
+	
+	
+}
+
+class CervezaRubia inherits Cerveza{
+	var property contenidoAlcohol = 0
+	
+}
+
+class CervezaNegra inherits Cerveza{
+	var property graduacioReglamentaria = 0.064
+	
+	method contenidoAlcohol() = graduacioReglamentaria.min(contLupulo * 2)
+	
+}
+
+class CervezaRoja inherits CervezaNegra{
+	
+	override method contenidoAlcohol() = super() * 1.25  
+	
+}
+
+class Jarra{
+	var property capacidad = 0 
+	var property marca = null
+	
+	method graduacionAlcoholica() = self.marca().contenidoAlcohol() * self.capacidad()
+	
+}
