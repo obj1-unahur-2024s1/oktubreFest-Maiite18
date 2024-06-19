@@ -1,9 +1,10 @@
-import jarrasYCervezas.*
+as.*
 import personas.*
 
 test "cont Alcohol" {
 	const cerveza = new CervezaRoja()
 	cerveza.contLupulo(5)
+	cerveza.graduacioReglamentaria(0.064)
 	const jarra = new Jarra()
 	jarra.capacidad(0.5)
 	jarra.marca(cerveza)
@@ -16,12 +17,14 @@ test "cont Alcohol" {
 test "total Alcohol Belga en base a dos jarras"{
 	const cerveza = new CervezaRoja()
 	cerveza.contLupulo(5)
+	cerveza.graduacioReglamentaria(0.064)
 	const jarra = new Jarra()
 	jarra.capacidad(0.5)
 	jarra.marca(cerveza)
 	
 	const cerveza2 = new CervezaRoja()
 	cerveza2.contLupulo(2)
+	cerveza2.graduacioReglamentaria(0.064)
 	const jarra2 = new Jarra()
 	jarra2.capacidad(0.5)
 	jarra2.marca(cerveza2)
@@ -34,3 +37,84 @@ test "total Alcohol Belga en base a dos jarras"{
 	
 	
 }
+
+
+test "estaEbria belga"{
+	const cerveza = new CervezaRoja()
+	cerveza.contLupulo(5)
+	cerveza.graduacioReglamentaria(0.064)
+	const jarra = new Jarra()
+	jarra.capacidad(0.5)
+	jarra.marca(cerveza)
+	
+	const cerveza2 = new CervezaRoja()
+	cerveza2.contLupulo(2)
+	cerveza2.graduacioReglamentaria(0.064)
+	const jarra2 = new Jarra()
+	jarra2.capacidad(0.5)
+	jarra2.marca(cerveza2)
+	
+	const belga = new Belga()
+	belga.peso(60)
+	belga.aguante(1)
+	belga.comprarJarra(jarra)
+	belga.comprarJarra(jarra2)
+	
+	assert.that(belga.estaEbria())
+	
+	
+}
+
+test "le gusta la cerveza belga"{
+	const cerveza = new CervezaRoja()
+	cerveza.contLupulo(5)
+	const jarra = new Jarra()
+	jarra.capacidad(0.5)
+	jarra.marca(cerveza)
+	
+	const belga = new Belga()
+	belga.peso(60)
+	belga.aguante(1)
+	belga.comprarJarra(jarra)
+	
+	assert.that(belga.leGustaLaCerveza(cerveza))
+	
+	
+}
+
+test "NO le gusta la cerveza Checo"{
+	const cerveza = new CervezaRoja()
+	cerveza.contLupulo(5)
+	const jarra = new Jarra()
+	jarra.capacidad(0.5)
+	jarra.marca(cerveza)
+	
+	const checo = new Checo()
+	checo.peso(60)
+	checo.aguante(1)
+	checo.comprarJarra(jarra)
+	
+	assert.that(not checo.leGustaLaCerveza(cerveza))
+	
+	
+}
+
+test "le gusta la cerveza Checo"{
+	const cerveza = new CervezaRoja()
+	cerveza.contLupulo(5)
+	cerveza.graduacioReglamentaria(1)
+	const jarra = new Jarra()
+	jarra.capacidad(0.5)
+	jarra.marca(cerveza)
+	
+	const checo = new Checo()
+	checo.peso(60)
+	checo.aguante(1)
+	checo.comprarJarra(jarra)
+	
+	assert.that(checo.leGustaLaCerveza(cerveza))
+	
+	
+}
+
+
